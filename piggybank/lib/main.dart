@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(MyApp());
 }
@@ -46,7 +45,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndex = 0; 
+  var selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = GeneratorPage();
         break;
       case 1:
-        page = Placeholder();
+        page = IncomePage();
         break;
       case 2:
         page = Placeholder();
@@ -69,46 +68,107 @@ class _MyHomePageState extends State<MyHomePage> {
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
+    }
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        body: Row(
+          children: [
+            SafeArea(
+              child: NavigationRail(
+                extended: constraints.maxWidth >= 600,
+                destinations: [
+                  NavigationRailDestination(
+                    icon: Icon(Icons.home),
+                    label: Text('Home'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.attach_money),
+                    label: Text('Income'),
+                  ),
+                  NavigationRailDestination(
+                      icon: Icon(Icons.difference_rounded),
+                      label: Text('Expenses')),
+                  NavigationRailDestination(
+                      icon: Icon(Icons.calculate), label: Text('Budget')),
+                  NavigationRailDestination(
+                      icon: Icon(Icons.add_chart), label: Text('View Spending'))
+                ],
+                selectedIndex: selectedIndex,
+                onDestinationSelected: (value) {
+                  setState(() {
+                    selectedIndex = value;
+                  });
+                },
+              ),
+            ),
+            Expanded(
+              child: Container(
+                color: Theme.of(context).colorScheme.primaryContainer,
+                child: page,
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+  }
 }
-    return Scaffold(
-      body: Row(
-        children: [
-          SafeArea(
-            child: NavigationRail(
-              extended: false,
-              destinations: [
-                NavigationRailDestination(
-                  icon: Icon(Icons.home),
-                  label: Text('Home'),
-                ),
-                NavigationRailDestination(
-                  icon: Icon(Icons.attach_money),
-                  label: Text('Income'),
-                ),
-                NavigationRailDestination(
-                    icon: Icon(Icons.difference_rounded),
-                    label: Text('Expenses')),
-                NavigationRailDestination(
-                    icon: Icon(Icons.calculate), label: Text('Budget')),
-                NavigationRailDestination(
-                    icon: Icon(Icons.add_chart), label: Text('View Spending'))
-              ],
-              selectedIndex: selectedIndex,
-              onDestinationSelected: (value) {
-                setState(() {
-                  selectedIndex = value;
-                });
-              },
-            ),
-          ),
-          Expanded(
-            child: Container(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              child: page,
-            ),
-          ),
-        ],
+
+class IncomePage extends StatelessWidget {
+  const IncomePage({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+          child: IncomeTextbox(),
+        ),
+        BtnAddIncome(),
+        Text('Income Balance: ')
+      ],
+    );
+  }
+}
+
+class BtnAddIncome extends StatelessWidget {
+  const BtnAddIncome({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text('Add Income'),
+    );
+  }
+}
+
+class IncomeTextbox extends StatefulWidget {
+  const IncomeTextbox({
+    super.key,
+  });
+
+  @override
+  State<IncomeTextbox> createState() => _IncomeTextboxState();
+}
+
+class _IncomeTextboxState extends State<IncomeTextbox> {
+  final getTextValue = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        border: OutlineInputBorder(),
+        hintText: 'Enter your income',
       ),
+      keyboardType: TextInputType.number,
+      controller: getTextValue,
     );
   }
 }
@@ -119,16 +179,8 @@ class GeneratorPage extends StatelessWidget {
     var appState = context.watch<MyAppState>();
     //var pair = appState.current;
 
-    IconData icon;
-    // if (appState.favorites.contains(pair)) {
-    //   icon = Icons.favorite;
-    // } else {
-    //   icon = Icons.favorite_border;
-    // }
-
     return Center(
       child: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(50.0),
@@ -138,7 +190,11 @@ class GeneratorPage extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset('images/bugcat_money.gif', width: 300, height: 300,)
+              Image.asset(
+                'images/bugcat_money.gif',
+                width: 300,
+                height: 300,
+              )
             ],
           ),
         ],
@@ -146,62 +202,6 @@ class GeneratorPage extends StatelessWidget {
     );
   }
 }
-
-// class ViewSpending extends StatelessWidget {
-//   const ViewSpending({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(
-//       onPressed: () {},
-//       child: Text('View Spending'),
-//     );
-//   }
-// }
-
-// class AddBudget extends StatelessWidget {
-//   const AddBudget({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(
-//       onPressed: () {},
-//       child: Text('Set Budget'),
-//     );
-//   }
-// }
-
-// class AddExpense extends StatelessWidget {
-//   const AddExpense({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(
-//       onPressed: () {},
-//       child: Text('Add Expense'),
-//     );
-//   }
-// }
-
-// class AddIncome extends StatelessWidget {
-//   const AddIncome({
-//     super.key,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return ElevatedButton(
-//       onPressed: () {},
-//       child: Text('Add Income'),
-//     );
-//   }
-// }
 
 class AppName extends StatelessWidget {
   const AppName({
