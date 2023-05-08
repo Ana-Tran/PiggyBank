@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             useMaterial3: true,
             elevatedButtonTheme: ElevatedButtonThemeData(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 0, 0, 0),
-                foregroundColor: Color.fromARGB(255, 255, 255, 255),
-                padding: const EdgeInsets.all(40),
+                style: ElevatedButton.styleFrom(
+              backgroundColor: Color.fromARGB(255, 0, 0, 0),
+              foregroundColor: Color.fromARGB(255, 255, 255, 255),
+              padding: const EdgeInsets.all(40),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
-                elevation: 3,
+              elevation: 3,
             )),
             colorScheme:
                 ColorScheme.fromSeed(seedColor: Color.fromARGB(0, 0, 0, 0)),
@@ -42,102 +42,135 @@ class MyAppState extends ChangeNotifier {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AppName(),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                // ↓ And this.
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AddIncome(),
-                    SizedBox(height: 10, width: 10),
-                    AddExpense(),
-                  ],
+      body: Row(
+        children: [
+          SafeArea(
+            child: NavigationRail(
+              extended: false,
+              destinations: [
+                NavigationRailDestination(
+                  icon: Icon(Icons.home),
+                  label: Text('Home'),
                 ),
-
-                SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AddBudget(),
-                    SizedBox(height: 10, width: 10),
-                    ViewSpending(),
-                  ],
+                NavigationRailDestination(
+                  icon: Icon(Icons.attach_money),
+                  label: Text('Income'),
                 ),
-
-
-                
+                NavigationRailDestination(
+                    icon: Icon(Icons.difference_rounded),
+                    label: Text('Expenses')),
+                NavigationRailDestination(
+                    icon: Icon(Icons.calculate), label: Text('Budget')),
+                NavigationRailDestination(
+                    icon: Icon(Icons.add_chart), label: Text('View Spending'))
               ],
+              selectedIndex: 0,
+              onDestinationSelected: (value) {
+                print('selected: $value');
+              },
             ),
-          ],
-        ),
+          ),
+          Expanded(
+            child: Container(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: GeneratorPage(),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-class ViewSpending extends StatelessWidget {
-  const ViewSpending({
-    super.key,
-  });
-
+class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('View Spending'),
+    var appState = context.watch<MyAppState>();
+    //var pair = appState.current;
+
+    IconData icon;
+    // if (appState.favorites.contains(pair)) {
+    //   icon = Icons.favorite;
+    // } else {
+    //   icon = Icons.favorite_border;
+    // }
+
+    return Center(
+      child: Column(
+        //mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: AppName(),
+          ),
+          SizedBox(height: 10),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
 
-class AddBudget extends StatelessWidget {
-  const AddBudget({
-    super.key,
-  });
+// class ViewSpending extends StatelessWidget {
+//   const ViewSpending({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('Set Budget'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       onPressed: () {},
+//       child: Text('View Spending'),
+//     );
+//   }
+// }
 
-class AddExpense extends StatelessWidget {
-  const AddExpense({
-    super.key,
-  });
+// class AddBudget extends StatelessWidget {
+//   const AddBudget({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('Add Expense'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       onPressed: () {},
+//       child: Text('Set Budget'),
+//     );
+//   }
+// }
 
-class AddIncome extends StatelessWidget {
-  const AddIncome({
-    super.key,
-  });
+// class AddExpense extends StatelessWidget {
+//   const AddExpense({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('Add Income'),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       onPressed: () {},
+//       child: Text('Add Expense'),
+//     );
+//   }
+// }
+
+// class AddIncome extends StatelessWidget {
+//   const AddIncome({
+//     super.key,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return ElevatedButton(
+//       onPressed: () {},
+//       child: Text('Add Income'),
+//     );
+//   }
+// }
 
 class AppName extends StatelessWidget {
   const AppName({
