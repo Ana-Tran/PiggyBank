@@ -46,8 +46,30 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var selectedIndex = 0; 
+
   @override
   Widget build(BuildContext context) {
+    Widget page;
+    switch (selectedIndex) {
+      case 0:
+        page = GeneratorPage();
+        break;
+      case 1:
+        page = Placeholder();
+        break;
+      case 2:
+        page = Placeholder();
+        break;
+      case 3:
+        page = Placeholder();
+        break;
+      case 4:
+        page = Placeholder();
+        break;
+      default:
+        throw UnimplementedError('no widget for $selectedIndex');
+}
     return Scaffold(
       body: Row(
         children: [
@@ -71,16 +93,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 NavigationRailDestination(
                     icon: Icon(Icons.add_chart), label: Text('View Spending'))
               ],
-              selectedIndex: 0,
+              selectedIndex: selectedIndex,
               onDestinationSelected: (value) {
-                print('selected: $value');
+                setState(() {
+                  selectedIndex = value;
+                });
               },
             ),
           ),
           Expanded(
             child: Container(
               color: Theme.of(context).colorScheme.primaryContainer,
-              child: GeneratorPage(),
+              child: page,
             ),
           ),
         ],
