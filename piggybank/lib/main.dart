@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromARGB(255, 0, 0, 0),
               foregroundColor: Color.fromARGB(255, 255, 255, 255),
-              padding: const EdgeInsets.all(40),
+              padding: const EdgeInsets.all(10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
               ),
@@ -39,7 +40,12 @@ class MyAppState extends ChangeNotifier {
   //var current = WordPair.random();
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -101,13 +107,14 @@ class GeneratorPage extends StatelessWidget {
         //mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(50.0),
             child: AppName(),
           ),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Image.asset('images/bugcat_money.gif', width: 300, height: 300,)
             ],
           ),
         ],
