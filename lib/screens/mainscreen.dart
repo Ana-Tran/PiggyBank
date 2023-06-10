@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:piggybank/components/reuseablecard.dart';
+import 'package:piggybank/constants.dart';
+import 'package:piggybank/components/reusedablebutton.dart';
+import 'package:piggybank/data/datalist.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -9,8 +13,68 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  List<Expanded> buildButtons() {
+    List<Expanded> iconOptions = [];
+    for (int i = 0; i < DataList.iconNames.length; i++) {
+      iconOptions.add(
+        Expanded(
+          child: Column(
+            children: [
+              ReuseableButton(
+                icons: DataList.iconData[i],
+                onClick: () {},
+              ),
+              Text(
+                DataList.iconNames[i],
+                style: kMainTextStyle,
+              )
+            ],
+          ),
+        ),
+      );
+    }
+    return iconOptions;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child:
+                  ReuseableCard(cardText: 'Card Balance', colors: kBeigeColor),
+            ),
+            SizedBox(height: kHomeSizedBoxHeight),
+            Expanded(
+              child: Row(
+                children: [...buildButtons()],
+              ),
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ReuseableCard(
+                      colors: kBeigeColor,
+                      cardText: 'Expense 1',
+                    ),
+                  ),
+                  Expanded(
+                    child: ReuseableCard(
+                      colors: kBeigeColor,
+                      cardText: 'Expense 2',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
