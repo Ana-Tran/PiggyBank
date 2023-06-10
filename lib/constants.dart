@@ -10,5 +10,7 @@ const kHomeTextStyle = TextStyle(
 const kHomeSizedBoxHeight = 10.0;
 const kHomeTextButtonStyle =
     TextStyle(fontSize: 25.0, fontFamily: 'RobotoSlab');
-const kMainTextStyle = TextStyle(
+const kMainBtnTextStyle = TextStyle(
     fontFamily: 'PublicSans', fontSize: 12.0, fontWeight: FontWeight.bold);
+const kMainButtonColor = Color.fromARGB(255, 33, 53, 85);
+const kMainCardColor = Color.fromARGB(255, 79, 112, 156);

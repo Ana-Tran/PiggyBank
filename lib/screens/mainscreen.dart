@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               Text(
                 DataList.iconNames[i],
-                style: kMainTextStyle,
+                style: kMainBtnTextStyle,
               )
             ],
           ),
@@ -42,11 +42,10 @@ class _MainScreenState extends State<MainScreen> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Expanded(
-              child:
-                  ReuseableCard(cardText: 'Card Balance', colors: kBeigeColor),
+              child: ReuseableCard(
+                  cardText: 'Card Balance', colors: kMainCardColor),
             ),
             SizedBox(height: kHomeSizedBoxHeight),
             Expanded(
@@ -59,13 +58,13 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Expanded(
                     child: ReuseableCard(
-                      colors: kBeigeColor,
+                      colors: kMainCardColor,
                       cardText: 'Expense 1',
                     ),
                   ),
                   Expanded(
                     child: ReuseableCard(
-                      colors: kBeigeColor,
+                      colors: kMainCardColor,
                       cardText: 'Expense 2',
                     ),
                   ),

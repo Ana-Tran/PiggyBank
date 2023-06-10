@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piggybank/constants.dart';
 
 class ReuseableButton extends StatelessWidget {
   ReuseableButton({required this.icons, required this.onClick});
@@ -12,7 +13,7 @@ class ReuseableButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(10.0),
-        backgroundColor: Colors.blue,
+        backgroundColor: kMainButtonColor,
         foregroundColor: Colors.white,
       ),
       child: Icon(icons),
