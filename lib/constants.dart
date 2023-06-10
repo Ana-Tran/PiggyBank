@@ -12,5 +12,5 @@ const kHomeTextButtonStyle =
     TextStyle(fontSize: 25.0, fontFamily: 'RobotoSlab');
 const kMainBtnTextStyle = TextStyle(
     fontFamily: 'PublicSans', fontSize: 12.0, fontWeight: FontWeight.bold);
-const kMainButtonColor = Color.fromARGB(255, 33, 53, 85);
-const kMainCardColor = Color.fromARGB(255, 79, 112, 156);
+const kMainScreenColor = Color.fromARGB(255, 43, 98, 221);
+const kMainBackColor = Color.fromARGB(250, 250, 250, 250);

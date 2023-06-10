@@ -39,13 +39,13 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: kMainBackColor,
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: ReuseableCard(
-                  cardText: 'Card Balance', colors: kMainCardColor),
+                  cardText: 'Card Balance', colors: kMainScreenColor),
             ),
             SizedBox(height: kHomeSizedBoxHeight),
             Expanded(
@@ -58,13 +58,13 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Expanded(
                     child: ReuseableCard(
-                      colors: kMainCardColor,
+                      colors: Colors.white,
                       cardText: 'Expense 1',
                     ),
                   ),
                   Expanded(
                     child: ReuseableCard(
-                      colors: kMainCardColor,
+                      colors: Colors.white,
                       cardText: 'Expense 2',
                     ),
                   ),
