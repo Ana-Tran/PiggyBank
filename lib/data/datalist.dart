@@ -13,4 +13,18 @@ class DataList {
     Icons.calculate_outlined,
     Icons.data_thresholding_outlined
   ];
+  static const List<String> expenseList = [
+    'Netflix',
+    'Spotify',
+    'Amazon',
+    'Apple',
+    'Rogers'
+  ];
+  static const List<IconData> expenseIcon = [
+    Icons.tv,
+    Icons.music_note_sharp,
+    Icons.shop,
+    Icons.apple,
+    Icons.settings_cell
+  ];
 }

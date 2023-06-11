@@ -70,7 +70,7 @@ flutter:
        fonts:
          - asset: fontstyles/PublicSans-SemiBold.ttf
   assets:
-     - images/home_image.png
+     - images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

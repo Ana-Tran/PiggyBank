@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ReuseableCard extends StatelessWidget {
-  ReuseableCard({required this.colors, required this.cardText});
+  ReuseableCard(
+      {required this.colors, required this.cardText, required this.iconData});
   final Color colors;
   final String cardText;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,13 @@ class ReuseableCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: Center(child: Text(cardText)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Icon(iconData),
+          Text(cardText),
+        ],
+      ),
     );
   }
 }

@@ -36,6 +36,8 @@ class _MainScreenState extends State<MainScreen> {
     return iconOptions;
   }
 
+  List<Expanded> buildExpense() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,9 +45,47 @@ class _MainScreenState extends State<MainScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: ReuseableCard(
-                  cardText: 'Card Balance', colors: kMainScreenColor),
+            Card(
+              margin: EdgeInsets.all(kMainCardPadding),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(kMainRadius),
+                ),
+              ),
+              child: Container(
+                height: kMainContainerHeight,
+                width: double.infinity,
+                decoration: const BoxDecoration(
+                  color: kMainIconColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(kMainRadius),
+                  ),
+                  image: DecorationImage(
+                      fit: BoxFit.fitWidth,
+                      image: AssetImage('images/cityscraper.png'),
+                      alignment: Alignment(0.0, 1.0)),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  textDirection: TextDirection.rtl,
+                  children: const [
+                    Padding(
+                      padding: kMainIncomeTextPadding,
+                      child: Text(
+                        'Account Balance',
+                        style: kMainIncomeTitleTextStyle,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: kMainCardPadding),
+                      child: Text(
+                        '\$9000.00',
+                        style: kMainIncomeSubTextStyle,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
             Container(
               padding: EdgeInsets.all(2.0),
@@ -67,15 +107,24 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                   Expanded(
-                    child: ReuseableCard(
-                      colors: Colors.white,
-                      cardText: 'Expense 1',
-                    ),
-                  ),
-                  Expanded(
-                    child: ReuseableCard(
-                      colors: Colors.white,
-                      cardText: 'Expense 2',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        ReuseableCard(
+                          colors: Colors.white,
+                          cardText: 'Spotify',
+                          iconData: Icons.music_note,
+                        ),
+                        ReuseableCard(
+                          colors: Colors.white,
+                          cardText: 'School',
+                          iconData: Icons.school,
+                        ),
+                        ReuseableCard(
+                            colors: colors,
+                            cardText: cardText,
+                            iconData: iconData)
+                      ],
                     ),
                   ),
                 ],
@@ -87,7 +136,7 @@ class _MainScreenState extends State<MainScreen> {
               padding: EdgeInsets.all(20.0),
               width: double.infinity,
               child: Text('Footer'),
-            )
+            ),
           ],
         ),
       ),

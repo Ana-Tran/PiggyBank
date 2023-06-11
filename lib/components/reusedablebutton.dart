@@ -13,7 +13,7 @@ class ReuseableButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
         padding: const EdgeInsets.all(10.0),
-        backgroundColor: kMainScreenColor,
+        backgroundColor: kMainIconColor,
         foregroundColor: Colors.white,
       ),
       child: Icon(icons),
