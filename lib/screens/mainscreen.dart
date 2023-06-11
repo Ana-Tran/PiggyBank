@@ -36,7 +36,22 @@ class _MainScreenState extends State<MainScreen> {
     return iconOptions;
   }
 
-  List<Expanded> buildExpense() {}
+  List<Expanded> buildExpense() {
+    List<Expanded> expenseList = [];
+    for (int i = 0; i < DataList.expenseList.length; i++) {
+      expenseList.add(
+        Expanded(
+          child: ReuseableCard(
+            colors: Colors.white,
+            cardText: DataList.expenseList[i],
+            iconData: DataList.expenseIcon[i],
+            cardSubText: DataList.expenseSubText[i],
+          ),
+        ),
+      );
+    }
+    return expenseList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +108,13 @@ class _MainScreenState extends State<MainScreen> {
                 children: [...buildButtons()],
               ),
             ),
-            SizedBox(height: kMainSizedBoxHeight),
+            const SizedBox(height: kMainSizedBoxHeight),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
+                  const Padding(
+                    padding: EdgeInsets.all(5.0),
                     child: Text(
                       'Transactions',
                       textAlign: TextAlign.left,
@@ -107,24 +122,8 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        ReuseableCard(
-                          colors: Colors.white,
-                          cardText: 'Spotify',
-                          iconData: Icons.music_note,
-                        ),
-                        ReuseableCard(
-                          colors: Colors.white,
-                          cardText: 'School',
-                          iconData: Icons.school,
-                        ),
-                        ReuseableCard(
-                            colors: colors,
-                            cardText: cardText,
-                            iconData: iconData)
-                      ],
+                    child: ListView(
+                      children: [...buildExpense()],
                     ),
                   ),
                 ],

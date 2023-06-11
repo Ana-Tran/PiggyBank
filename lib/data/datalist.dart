@@ -25,6 +25,13 @@ class DataList {
     Icons.music_note_sharp,
     Icons.shop,
     Icons.apple,
-    Icons.settings_cell
+    Icons.phone_android
+  ];
+  static const List<String> expenseSubText = [
+    'September 31, 2023',
+    'September 1, 2023',
+    'August 6, 2023',
+    'July 15, 2023',
+    'July 1, 2023',
   ];
 }
