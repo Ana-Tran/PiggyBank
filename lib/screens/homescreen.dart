@@ -20,14 +20,14 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   const Text('PIGGY BANK', style: kHomeTextStyle),
                   const SizedBox(
-                    height: kHomeSizedBoxHeight,
+                    height: kPaddingSize10,
                   ),
                   //Illustration by "https://icons8.com/illustrations/author/zD2oqC8lLBBA" Icons 8 from "https://icons8.com/illustrations" Ouch!
                   const Image(
                     image: AssetImage('images/home_image.png'),
                   ),
                   const SizedBox(
-                    height: kHomeSizedBoxHeight,
+                    height: kPaddingSize10,
                   ),
                   TextButton(
                     style: TextButton.styleFrom(

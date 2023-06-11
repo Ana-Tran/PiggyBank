@@ -7,52 +7,57 @@ class ReuseableCard extends StatelessWidget {
       required this.colors,
       required this.cardText,
       required this.iconData,
-      required this.cardSubText});
+      required this.cardSubText,
+      required this.cardCost});
   final Color colors;
   final String cardText;
   final String cardSubText;
+  final String cardCost;
   final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 2.0,
-            color: Colors.white30,
-          ),
-        ],
+    return Card(
+      margin: kTransactionCardMargin,
+      color: colors,
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(kPaddingSize10),
       ),
-      child: Card(
-        color: colors,
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: Row(
-          textDirection: TextDirection.ltr,
-          children: [
-            Icon(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        textDirection: TextDirection.ltr,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(kPaddingSize20),
+            child: Icon(
               iconData,
               size: 30.0,
             ),
-            const SizedBox(
-              width: kMainCardPadding,
-            ),
-            Column(
-              children: [
-                Text(
-                  cardText,
-                ),
-                const SizedBox(
-                  height: 2.0,
-                ),
-                Text(cardSubText),
-              ],
-            ),
-          ],
-        ),
+          ),
+          const SizedBox(
+            width: kPaddingSize10,
+          ),
+          Column(
+            //textDirection: TextDirection.ltr,
+            children: [
+              Text(
+                cardText,
+                style: kTransactionMainTextStyle,
+                textAlign: TextAlign.left,
+                textDirection: TextDirection.ltr,
+              ),
+              const SizedBox(
+                height: 2.0,
+              ),
+              Text(
+                cardSubText,
+                style: kTransactionSubTextStyle,
+              ),
+            ],
+          ),
+          Text(cardCost)
+        ],
       ),
     );
   }

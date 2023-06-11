@@ -34,4 +34,11 @@ class DataList {
     'July 15, 2023',
     'July 1, 2023',
   ];
+  static const List<String> expenseCost = [
+    '-\$21.99',
+    '-\$5.99',
+    '-\$9.99',
+    '-\$130.99',
+    '-\$61.75'
+  ];
 }

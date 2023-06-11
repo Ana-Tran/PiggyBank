@@ -46,6 +46,7 @@ class _MainScreenState extends State<MainScreen> {
             cardText: DataList.expenseList[i],
             iconData: DataList.expenseIcon[i],
             cardSubText: DataList.expenseSubText[i],
+            cardCost: DataList.expenseCost[i],
           ),
         ),
       );
@@ -61,10 +62,10 @@ class _MainScreenState extends State<MainScreen> {
         child: Column(
           children: [
             Card(
-              margin: EdgeInsets.all(kMainCardPadding),
-              shape: RoundedRectangleBorder(
+              margin: const EdgeInsets.all(kPaddingSize10),
+              shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(kMainRadius),
+                  Radius.circular(kPaddingSize20),
                 ),
               ),
               child: Container(
@@ -73,12 +74,13 @@ class _MainScreenState extends State<MainScreen> {
                 decoration: const BoxDecoration(
                   color: kMainIconColor,
                   borderRadius: BorderRadius.all(
-                    Radius.circular(kMainRadius),
+                    Radius.circular(kPaddingSize20),
                   ),
                   image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: AssetImage('images/cityscraper.png'),
-                      alignment: Alignment(0.0, 1.0)),
+                    fit: BoxFit.fitWidth,
+                    image: AssetImage('images/cityscraper.png'),
+                    alignment: Alignment(0.0, 1.0),
+                  ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -92,9 +94,9 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: kMainCardPadding),
+                      padding: EdgeInsets.only(left: kPaddingSize10),
                       child: Text(
-                        '\$9000.00',
+                        '\$9,000.00',
                         style: kMainIncomeSubTextStyle,
                       ),
                     ),
@@ -108,13 +110,13 @@ class _MainScreenState extends State<MainScreen> {
                 children: [...buildButtons()],
               ),
             ),
-            const SizedBox(height: kMainSizedBoxHeight),
+            const SizedBox(height: kPaddingSize30),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.all(5.0),
+                    padding: EdgeInsets.only(left: kPaddingSize10),
                     child: Text(
                       'Transactions',
                       textAlign: TextAlign.left,
