@@ -25,21 +25,19 @@ class ReuseableCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(kPaddingSize10),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         textDirection: TextDirection.ltr,
         children: [
           Padding(
-            padding: const EdgeInsets.all(kPaddingSize20),
+            padding: const EdgeInsets.only(
+                top: kPaddingSize20, bottom: kPaddingSize20, left: 15.0),
             child: Icon(
               iconData,
               size: 30.0,
             ),
           ),
-          const SizedBox(
-            width: kPaddingSize10,
-          ),
           Column(
-            //textDirection: TextDirection.ltr,
+            textDirection: TextDirection.ltr,
             children: [
               Text(
                 cardText,
@@ -56,7 +54,13 @@ class ReuseableCard extends StatelessWidget {
               ),
             ],
           ),
-          Text(cardCost)
+          Padding(
+            padding: const EdgeInsets.only(right: 15.0),
+            child: Text(
+              cardCost,
+              style: kTransactionCostTextStyle,
+            ),
+          )
         ],
       ),
     );

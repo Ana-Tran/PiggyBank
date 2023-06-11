@@ -6,6 +6,7 @@ const kMainIconColor = Color.fromARGB(255, 43, 98, 221);
 const kMainBackColor = Color.fromARGB(250, 250, 250, 250);
 const kMainIncomeTextColor = Color.fromARGB(255, 222, 242, 252);
 const kLightGreyTextColor = Color.fromARGB(255, 160, 160, 160);
+
 const kHomeTextStyle = TextStyle(
   color: kBeigeColor,
   fontSize: 40.0,
@@ -20,7 +21,7 @@ const kMainLblTextStyle = TextStyle(
 );
 const kMainIncomeTitleTextStyle = TextStyle(
     color: kMainIncomeTextColor,
-    fontFamily: 'RobotoSlab',
+    fontFamily: 'PublicSans',
     fontSize: 12.0,
     fontWeight: FontWeight.bold,
     letterSpacing: 2.0);
@@ -33,6 +34,7 @@ const kTransactionSubTextStyle = TextStyle(
 );
 const kTransactionMainTextStyle = TextStyle(
     fontSize: 15.0, fontWeight: FontWeight.bold, fontFamily: 'PublicSans');
+const kTransactionCostTextStyle = TextStyle(color: Colors.red);
 
 const kPaddingSize10 = 10.0;
 const kPaddingSize20 = 20.0;

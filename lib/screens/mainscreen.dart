@@ -89,7 +89,7 @@ class _MainScreenState extends State<MainScreen> {
                     Padding(
                       padding: kMainIncomeTextPadding,
                       child: Text(
-                        'Account Balance',
+                        'ACCOUNT BALANCE',
                         style: kMainIncomeTitleTextStyle,
                       ),
                     ),
