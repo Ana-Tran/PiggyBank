@@ -47,8 +47,8 @@ class _MainScreenState extends State<MainScreen> {
               child: ReuseableCard(
                   cardText: 'Card Balance', colors: kMainScreenColor),
             ),
-            SizedBox(height: kMainSizedBoxHeight),
             Container(
+              padding: EdgeInsets.all(2.0),
               child: Row(
                 children: [...buildButtons()],
               ),
@@ -56,8 +56,16 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(height: kMainSizedBoxHeight),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('Transactions'),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Text(
+                      'Transactions',
+                      textAlign: TextAlign.left,
+                      style: kMainLblTextStyle,
+                    ),
+                  ),
                   Expanded(
                     child: ReuseableCard(
                       colors: Colors.white,
@@ -73,6 +81,13 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
             ),
+            Container(
+              color: Colors.white,
+              margin: EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.all(20.0),
+              width: double.infinity,
+              child: Text('Footer'),
+            )
           ],
         ),
       ),

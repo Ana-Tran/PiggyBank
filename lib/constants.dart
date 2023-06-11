@@ -15,3 +15,4 @@ const kMainBtnTextStyle = TextStyle(
 const kMainScreenColor = Color.fromARGB(255, 43, 98, 221);
 const kMainBackColor = Color.fromARGB(250, 250, 250, 250);
 const kMainSizedBoxHeight = 30.0;
+const kMainLblTextStyle = TextStyle(color: Color.fromARGB(255, 160, 160, 160));
