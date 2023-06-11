@@ -47,15 +47,17 @@ class _MainScreenState extends State<MainScreen> {
               child: ReuseableCard(
                   cardText: 'Card Balance', colors: kMainScreenColor),
             ),
-            SizedBox(height: kHomeSizedBoxHeight),
-            Expanded(
+            SizedBox(height: kMainSizedBoxHeight),
+            Container(
               child: Row(
                 children: [...buildButtons()],
               ),
             ),
+            SizedBox(height: kMainSizedBoxHeight),
             Expanded(
               child: Column(
                 children: [
+                  Text('Transactions'),
                   Expanded(
                     child: ReuseableCard(
                       colors: Colors.white,

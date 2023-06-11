@@ -14,3 +14,4 @@ const kMainBtnTextStyle = TextStyle(
     fontFamily: 'PublicSans', fontSize: 12.0, fontWeight: FontWeight.bold);
 const kMainScreenColor = Color.fromARGB(255, 43, 98, 221);
 const kMainBackColor = Color.fromARGB(250, 250, 250, 250);
+const kMainSizedBoxHeight = 30.0;
